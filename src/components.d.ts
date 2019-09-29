@@ -9,6 +9,16 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
+  interface CokePagination {
+    /**
+    * The middle name
+    */
+    'pageSize': number;
+    /**
+    * The first name
+    */
+    'totoal': number;
+  }
   interface MyComponent {
     /**
     * The first name
@@ -28,18 +38,35 @@ export namespace Components {
 declare global {
 
 
+  interface HTMLCokePaginationElement extends Components.CokePagination, HTMLStencilElement {}
+  var HTMLCokePaginationElement: {
+    prototype: HTMLCokePaginationElement;
+    new (): HTMLCokePaginationElement;
+  };
+
   interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
   var HTMLMyComponentElement: {
     prototype: HTMLMyComponentElement;
     new (): HTMLMyComponentElement;
   };
   interface HTMLElementTagNameMap {
+    'coke-pagination': HTMLCokePaginationElement;
     'my-component': HTMLMyComponentElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface MyComponent extends JSXBase.HTMLAttributes<HTMLMyComponentElement> {
+  interface CokePagination {
+    /**
+    * The middle name
+    */
+    'pageSize'?: number;
+    /**
+    * The first name
+    */
+    'totoal'?: number;
+  }
+  interface MyComponent {
     /**
     * The first name
     */
@@ -55,6 +82,7 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'coke-pagination': CokePagination;
     'my-component': MyComponent;
   }
 }
@@ -64,7 +92,10 @@ export { LocalJSX as JSX };
 
 declare module "@stencil/core" {
   export namespace JSX {
-    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
+    interface IntrinsicElements {
+      'coke-pagination': LocalJSX.CokePagination & JSXBase.HTMLAttributes<HTMLCokePaginationElement>;
+      'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+    }
   }
 }
 
