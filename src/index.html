@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <title>Stencil Component Starter</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Stencil Component Starter</title>
 
-  <script type="module" src="/build/coke.esm.js"></script>
-  <script nomodule src="/build/coke.js"></script>
+    <script type="module" src="/build/coke.esm.js"></script>
+    <script nomodule src="/build/coke.js"></script>
+  </head>
+  <body>
+  
+    <coke-pagination page-size="10" total="80"></coke-pagination>
 
-</head>
-<body>
-
-  <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
-
-  <coke-pagination pageSize="10" totoal="80"></coke-pagination>
-
-</body>
+    <script>
+      const todoListElement = document.querySelector("coke-pagination");
+      todoListElement.addEventListener("pageChanged", event => {
+        console.log(event);
+      });
+    </script>
+  </body>
 </html>

@@ -1,32 +1,45 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { newE2EPage } from "@stencil/core/testing";
 
-describe('my-component', () => {
-  it('renders', async () => {
+describe("pagintaion", () => {
+  it("renders", async () => {
     const page = await newE2EPage();
 
-    await page.setContent('<my-component></my-component>');
-    const element = await page.find('my-component');
-    expect(element).toHaveClass('hydrated');
+    await page.setContent("<coke-pagination></coke-pagination>");
+    const element = await page.find("coke-pagination");
+    expect(element).toHaveClass("hydrated");
   });
 
-  it('renders changes to the name data', async () => {
+  it("renders forward and backward buttons", async () => {
     const page = await newE2EPage();
 
-    await page.setContent('<my-component></my-component>');
-    const component = await page.find('my-component');
-    const element = await page.find('my-component >>> div');
-    expect(element.textContent).toEqual(`Hello, World! I'm `);
+    await page.setContent("<coke-pagination></coke-pagination>");
 
-    component.setProperty('first', 'James');
-    await page.waitForChanges();
-    expect(element.textContent).toEqual(`Hello, World! I'm James`);
+    const backwardButton = await page.find(
+      "coke-pagination >>> .pagintation--backward"
+    );
+    expect(backwardButton).toBeDefined();
 
-    component.setProperty('last', 'Quincy');
-    await page.waitForChanges();
-    expect(element.textContent).toEqual(`Hello, World! I'm James Quincy`);
+    const forwardButton = await page.find(
+      "coke-pagination >>> .pagintation--forward"
+    );
+    expect(forwardButton).toBeDefined();
+  });
 
-    component.setProperty('middle', 'Earl');
-    await page.waitForChanges();
-    expect(element.textContent).toEqual(`Hello, World! I'm James Earl Quincy`);
+  it("renders correctly pages buttons", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(
+      '<coke-pagination page-size="10" current-page="2" total="89"></coke-pagination>'
+    );
+
+    const pageButtons = await page.findAll(
+      "coke-pagination >>> .pagintation--page-button"
+    );
+    expect(pageButtons.length).toEqual(9);
+
+    const activeButton = await page.find(
+      "coke-pagination >>> .pagintation--page-button.active"
+    );
+    expect(activeButton.innerText).toEqual("3");
   });
 });

@@ -10,28 +10,9 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface CokePagination {
-    /**
-    * The middle name
-    */
+    'currentPage': number;
     'pageSize': number;
-    /**
-    * The first name
-    */
-    'totoal': number;
-  }
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first': string;
-    /**
-    * The last name
-    */
-    'last': string;
-    /**
-    * The middle name
-    */
-    'middle': string;
+    'total': number;
   }
 }
 
@@ -43,47 +24,21 @@ declare global {
     prototype: HTMLCokePaginationElement;
     new (): HTMLCokePaginationElement;
   };
-
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
-  };
   interface HTMLElementTagNameMap {
     'coke-pagination': HTMLCokePaginationElement;
-    'my-component': HTMLMyComponentElement;
   }
 }
 
 declare namespace LocalJSX {
   interface CokePagination {
-    /**
-    * The middle name
-    */
-    'pageSize'?: number;
-    /**
-    * The first name
-    */
-    'totoal'?: number;
-  }
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first'?: string;
-    /**
-    * The last name
-    */
-    'last'?: string;
-    /**
-    * The middle name
-    */
-    'middle'?: string;
+    'currentPage': number;
+    'onPageChanged'?: (event: CustomEvent<any>) => void;
+    'pageSize': number;
+    'total': number;
   }
 
   interface IntrinsicElements {
     'coke-pagination': CokePagination;
-    'my-component': MyComponent;
   }
 }
 
@@ -94,7 +49,6 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'coke-pagination': LocalJSX.CokePagination & JSXBase.HTMLAttributes<HTMLCokePaginationElement>;
-      'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
     }
   }
 }
