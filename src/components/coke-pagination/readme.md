@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property   | Attribute   | Description | Type     | Default     |
-| ---------- | ----------- | ----------- | -------- | ----------- |
-| `pageSize` | `page-size` |             | `number` | `undefined` |
-| `totoal`   | `totoal`    |             | `number` | `undefined` |
+| Property      | Attribute     | Description | Type     | Default     |
+| ------------- | ------------- | ----------- | -------- | ----------- |
+| `currentpage` | `currentpage` |             | `number` | `undefined` |
+| `pagesize`    | `pagesize`    |             | `number` | `undefined` |
+| `total`       | `total`       |             | `number` | `undefined` |
 
 
 ## Events

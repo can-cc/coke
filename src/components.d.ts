@@ -10,8 +10,8 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface CokePagination {
-    'currentPage': number;
-    'pageSize': number;
+    'currentpage': number;
+    'pagesize': number;
     'total': number;
   }
 }
@@ -31,10 +31,10 @@ declare global {
 
 declare namespace LocalJSX {
   interface CokePagination {
-    'currentPage': number;
+    'currentpage'?: number;
     'onPageChanged'?: (event: CustomEvent<any>) => void;
-    'pageSize': number;
-    'total': number;
+    'pagesize'?: number;
+    'total'?: number;
   }
 
   interface IntrinsicElements {

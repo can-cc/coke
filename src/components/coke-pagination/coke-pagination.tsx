@@ -1,4 +1,4 @@
-import { Component, Prop, h, Event, EventEmitter, State } from "@stencil/core";
+import { Component, Prop, h, Event, EventEmitter } from "@stencil/core";
 
 @Component({
   tag: "coke-pagination",
@@ -6,11 +6,11 @@ import { Component, Prop, h, Event, EventEmitter, State } from "@stencil/core";
   shadow: true
 })
 export class CokePagination {
-  @Prop() total!: number;
+  @Prop() total: number;
 
-  @Prop() pageSize!: number;
+  @Prop() pagesize: number;
 
-  @Prop() currentPage!: number;
+  @Prop() currentpage: number;
 
   @Event() pageChanged: EventEmitter;
 
@@ -19,7 +19,7 @@ export class CokePagination {
     event.stopPropagation();
     if (
       targetPageNumber < 1 ||
-      targetPageNumber > Math.ceil(this.total / this.pageSize)
+      targetPageNumber > Math.ceil(this.total / this.pagesize)
     ) {
       throw new Error("out of pagination range");
     }
@@ -27,13 +27,13 @@ export class CokePagination {
   }
 
   private renderPageButtons(): Array<HTMLButtonElement> {
-    const pageNumber = Math.ceil(this.total / this.pageSize);
+    const pageNumber = Math.ceil(this.total / this.pagesize);
     let buttons = [];
     for (let i = 0; i < pageNumber; i++) {
       buttons.push(
         <button
           class={
-            this.currentPage === i
+            this.currentpage === i
               ? "active pagintation--page-button"
               : "pagintation--page-button"
           }
@@ -51,14 +51,14 @@ export class CokePagination {
       <div>
         <button
           class="pagintation--backward"
-          onClick={event => this.onButtonClick(event, this.currentPage - 1)}
+          onClick={event => this.onButtonClick(event, this.currentpage - 1)}
         >
           前
         </button>
         {this.renderPageButtons()}
         <button
           class="pagintation--forward"
-          onClick={event => this.onButtonClick(event, this.currentPage + 1)}
+          onClick={event => this.onButtonClick(event, this.currentpage + 1)}
         >
           后
         </button>

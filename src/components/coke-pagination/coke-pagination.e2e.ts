@@ -29,7 +29,7 @@ describe("pagintaion", () => {
     const page = await newE2EPage();
 
     await page.setContent(
-      '<coke-pagination page-size="10" current-page="2" total="89"></coke-pagination>'
+      '<coke-pagination pagesize="10" currentpage="2" total="89"></coke-pagination>'
     );
 
     const pageButtons = await page.findAll(

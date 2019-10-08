@@ -3,9 +3,9 @@ import { CokePagination } from "./coke-pagination";
 it("should onPageChanged correclty on pagation component", async () => {
   const pagintaion = new CokePagination();
 
-  pagintaion.pageSize = 10;
+  pagintaion.pagesize = 10;
   pagintaion.total = 90;
-  pagintaion.currentPage = 1;
+  pagintaion.currentpage = 1;
 
   const changedSpy = jest.fn();
   pagintaion.pageChanged = {
