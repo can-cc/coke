@@ -1,3 +1,46 @@
-button.active {
-  background-color: red;
+:host {
+  display: block;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  background-color: transparent;
+  -webkit-appearance: none;
+  border: none;
+  padding: 0;
+  height: 20px;
+  width: 20px;
+  line-height: 19px;
+  display: block;
+  outline: none;
+  cursor: pointer;
+  margin-left: 4px;
+  font-size: 16px;
+}
+
+button:first-child {
+  margin-left: 0;
+}
+
+button:hover {
+  color: #409eff
+}
+
+.pagintation--page-button {
+  color: #999;
+}
+
+.pagintation--page-button.active {
+  color: #409eff;
+  font-weight: bolder;
+}
+
+.pagintation--forward svg, .pagintation--backward svg {
+  display: block;
+  height: 16px;
+  width: 16px;
 }
