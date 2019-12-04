@@ -39,8 +39,13 @@ button:hover {
   font-weight: bolder;
 }
 
+.pagintation--forward.disabled, .pagintation--backward.disabled {
+  cursor: not-allowed;
+}
+
 .pagintation--forward svg, .pagintation--backward svg {
   display: block;
+  margin: 0 auto;
   height: 16px;
   width: 16px;
 }
